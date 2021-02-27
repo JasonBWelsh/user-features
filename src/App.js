@@ -4,6 +4,8 @@ import { setUsers } from './redux_slices/usersSlice';
 import axios from 'axios';
 import './App.css';
 
+import UserControls from './components/userControls';
+
 function App() {
   const URL = 'https://randomuser.me/api/?results=13';
 
@@ -16,7 +18,7 @@ function App() {
       try {
         const response = await axios.get(URL);
         const { data: { results } } = response;
-        console.log(results);
+        console.log('response results:', results);
         // setUsers(results);
         dispatch(setUsers(results));
       } catch (error) {
@@ -28,6 +30,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <UserControls />
       tesst
     </div>
   );
