@@ -1,37 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUsers } from './redux_slices/usersSlice';
-import axios from 'axios';
 import './App.css';
 
+import { useFetchData } from './app/hooks/useFetchData';
+
 import UserControls from './components/userControls';
+import UsersDisplay from './components/usersDisplay';
+
+import { URL, DATA_FETCH_STATUS } from './app/constants';
 
 function App() {
-  const URL = 'https://randomuser.me/api/?results=13';
-
-  // const [users, setUsers] = useState([]);
-
+  const [url, setUrl] = useState(URL);
   const dispatch = useDispatch();
+  const { status, data } = useFetchData(url);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(URL);
-        const { data: { results } } = response;
-        console.log('response results:', results);
-        // setUsers(results);
-        dispatch(setUsers(results));
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    // set user data to the redux store
+    dispatch(setUsers(data));
+  }, [data, dispatch]);
 
-    fetchData();
-  }, []);
+  
   return (
     <div className="App">
       <UserControls />
-      tesst
+      {status === DATA_FETCH_STATUS.FETCHED && data
+        ? <UsersDisplay />
+        : 'fetching user data...'}
     </div>
   );
 }
