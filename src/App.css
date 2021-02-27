@@ -3,4 +3,7 @@
 .App {
   box-sizing: border-box;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

@@ -3,7 +3,10 @@ import { StyledUserControls } from './StyledUserControls';
 
 function UserControls() {
     return (
-        <StyledUserControls>UserControls</StyledUserControls>
+        <StyledUserControls>
+            UserControls
+            <button>search</button>
+        </StyledUserControls>
     );
 }
 
