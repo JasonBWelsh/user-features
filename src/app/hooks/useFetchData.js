@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { DATA_FETCH_STATUS } from '../constants';
 
@@ -18,7 +18,7 @@ export const useFetchData = (url) => {
                 setData(results);
                 setStatus(DATA_FETCH_STATUS.FETCHED);
             } catch (error) {
-                console.log(error);
+                console.debug(error);
             }
         };
 

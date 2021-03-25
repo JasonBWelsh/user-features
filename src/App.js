@@ -5,7 +5,7 @@ import './App.css';
 
 import { useFetchData } from './app/hooks/useFetchData';
 
-import UserControls from './components/userControls';
+import Controls from './components/controls';
 import UsersDisplay from './components/usersDisplay';
 
 import { URL, DATA_FETCH_STATUS } from './app/constants';
@@ -23,7 +23,7 @@ function App() {
   
   return (
     <div className="App">
-      <UserControls />
+      <Controls />
       {status === DATA_FETCH_STATUS.FETCHED && data
         ? <UsersDisplay />
         : 'fetching user data...'}

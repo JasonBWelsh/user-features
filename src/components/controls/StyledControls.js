@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledUserControls = styled.div`
+export const StyledControls = styled.div`
     border: 1px dotted grey;
 
     display: flex;
